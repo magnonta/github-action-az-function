@@ -2,19 +2,19 @@ data = {
     "todos": [
       {
         "id": 1,
-        "task": 'task1',
+        "task": 'magno',
         "assignee": 'assignee1000',
         "status": 'completed'
       },
       {
         "id": 2,
-        "task": 'task2',
+        "task": 'ediee',
         "assignee": 'assignee1001',
         "status": 'completed'
       },
       {
         "id": 3,
-        "task": 'task3',
+        "task": 'nat',
         "assignee": 'assignee1002',
         "status": 'completed'
       },
