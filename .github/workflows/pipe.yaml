@@ -80,5 +80,7 @@ jobs:
           app-name: 'pipeline-teste'
           slot-name: 'production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+          ACTIONS_RUNNER_DEBUG: true
+          ACTIONS_STEP_DEBUG: true
           scm-do-build-during-deployment: false
           enable-oryx-build: false
