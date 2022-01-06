@@ -16,6 +16,11 @@ env:
 
 jobs:
   build:
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -58,6 +63,11 @@ jobs:
         with:
           name: python-app
           path: .
+
+      - name: "Login via Azure CLI"
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
           
       - name: List project files before build.settings.json rename
         run: tree
@@ -70,6 +80,5 @@ jobs:
           app-name: 'pipeline-teste'
           slot-name: 'production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_008cf23d1f34451bb9ef4a6a3033c440 }}
           scm-do-build-during-deployment: true
           enable-oryx-build: true
