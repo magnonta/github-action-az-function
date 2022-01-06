@@ -12,7 +12,7 @@ on:
     inputs:
         debug_enabled:
           description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'     
-          required: false
+          required: true
           default: true
 
 env:
@@ -80,7 +80,6 @@ jobs:
 
       - name: 'Deploy to Azure Functions'
         uses: Azure/functions-action@v1
-        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled }}
         id: deploy-to-function
         with:
           app-name: 'pipeline-teste'
