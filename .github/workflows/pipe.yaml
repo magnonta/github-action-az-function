@@ -78,17 +78,12 @@ jobs:
       - name: List project files before build.settings.json rename
         run: tree
         working-directory: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-
-      # - name: 'Deploy to Azure Functions'
-      #   uses: Azure/functions-action@v1
-      #   id: deploy-to-function
-      #   with:
-      #     app-name: 'pipeline-teste'
-      #     slot-name: 'production'
-      #     package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-      #     verbose: true
-      #     scm-do-build-during-deployment: false
-      #     enable-oryx-build: false
+      
+      - name: Zip Package
+        uses: papeloto/action-zip@v1
+        with:
+          files: .
+          dest: function-app.zip
 
       - name: Deploy code
         uses: azure/CLI@v1
